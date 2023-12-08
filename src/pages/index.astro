@@ -2,12 +2,44 @@
 import Layout from '../layouts/Layout.astro';
 import H1 from '../components/H1.astro';
 import Main from '../components/Main.astro';
+import Card from '../components/Card.astro';
 
 export const prerender = true;
+
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+
+// Sort posts by date in descending order (newest first)
+posts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
+
+// Get the latest 4 posts
+const latestPosts = posts.slice(0, 4);
+
+function formatDate(dateStr) {
+  const dateObj = new Date(dateStr);
+  return dateObj.toLocaleDateString();
+}
 ---
 
 <Layout title="Rythm Nation Blog">
-	<Main>
-		<H1 text='Rythm Nation'/>
-	</Main>
+    <Main>
+        <H1 text="Rythm Nation" />
+
+		<h2 class="text-2xl font-semibold py-6">
+			Most Recent Posts
+		</h2>
+        <div class="grid grid-cols-2 gap-x-16 gap-y-14 max-md:grid-cols-1  mb-16">
+          {latestPosts.map(post => (
+            <Card
+              key={post.slug}
+              image={post.data.image}
+              author={post.data.author}
+              date={formatDate(post.data.date)}
+              title={post.data.title}
+              slug={post.slug}
+            />
+          ))}
+        </div>
+    </Main>
 </Layout>
