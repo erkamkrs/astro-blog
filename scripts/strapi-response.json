@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 4,
+      "attributes": {
+        "slug": "joselus-resurgence-from-overlooked-to-center-stage",
+        "title": "Joselu's Resurgence: From Overlooked to Center Stage",
+        "date": "2023-12-14",
+        "image": {
+          "data": [
+            {
+              "id": 4,
+              "attributes": {
+                "url": "/uploads/Joselu_Real_Madrid_2023_bea4c4a9a3.jpg"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 1
+    }
+  }
+}

@@ -2,44 +2,45 @@
 import Layout from '../layouts/Layout.astro';
 import H1 from '../components/H1.astro';
 import Main from '../components/Main.astro';
-import Card from '../components/Card.astro';
+import { getReviews } from '../../lib/reviews';
+import { Image } from 'astro:assets';
+export const prerender = false; 
 
-export const prerender = true;
+const posts = await getReviews(); 
 
-import { getCollection } from 'astro:content';
-
-const posts = await getCollection('posts');
-
-// Sort posts by date in descending order (newest first)
-posts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
-
-// Get the latest 4 posts
-const latestPosts = posts.slice(0, 4);
-
-function formatDate(dateStr) {
-  const dateObj = new Date(dateStr);
-  return dateObj.toLocaleDateString();
-}
 ---
 
-<Layout title="Rythm Nation Blog">
+<Layout title="Bloggerk">
     <Main>
-        <H1 text="Rythm Nation" />
-
-		<h2 class="text-2xl font-semibold py-6">
-			Most Recent Posts
-		</h2>
-        <div class="grid grid-cols-2 gap-x-16 gap-y-14 max-md:grid-cols-1  mb-16">
-          {latestPosts.map(post => (
-            <Card
-              key={post.slug}
-              image={post.data.image}
-              author={post.data.author}
-              date={formatDate(post.data.date)}
-              title={post.data.title}
-              slug={post.slug}
-            />
-          ))}
+        <H1 text="Bloggerk" />
+        <h2 class="text-2xl font-semibold py-6">
+            Most Recent Posts
+        </h2>
+        <div class="grid grid-cols-2 gap-x-16 gap-y-14 max-md:grid-cols-1 mb-16">
+            {posts.map(post => (
+                <article key={post.slug} class="card rounded-lg shadow-xl overflow-hidden">
+                    <Image
+                        src={post.image}
+                        alt={post.slug}
+                        width="600"
+                        height="500"
+                        class="w-full h-56 object-cover rounded-t-lg"
+                    />
+                    <div class="p-4">
+                        <h2 class="text-3xl font-semibold leading-tight">
+                            <a href={`/blog/${post.slug}`}>
+                                {post.title}
+                            </a>
+                        </h2>
+                        <p class="text-gray-500 mb-2">
+                            {post.date}
+                        </p>
+                        <a href={`/blog/${post.slug}`} class="inline-block mt-2 font-semibold text-teal-800">
+                            Read More
+                        </a>
+                    </div>
+                </article>
+            ))}
         </div>
     </Main>
 </Layout>

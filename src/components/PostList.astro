@@ -1,17 +1,20 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import Post from "./Post.astro";
+import { getReviews } from '../../lib/reviews'; // Import getReviews
 
-type Props = {
-    posts: CollectionEntry<'posts'>[];
-};
+// Fetch all reviews/posts
+const posts = await getReviews();
 
-const {posts} = Astro.props;
+// Ensure that posts data is available
+if (!posts || posts.length === 0) {
+    throw new Error(`No posts found`);
+}
 ---
 
-
 <div 
-class="grid grid-cols-2 gap-x-16 gap-y-14 max-md:grid-cols-1  mb-24"
+    class="grid grid-cols-2 gap-x-16 gap-y-14 max-md:grid-cols-1 mb-24"
 >
-    {posts.map((post) => <Post post={post} />)}
+    {posts.map((post) => (
+        <Post key={post.slug} post={post} />
+    ))}
 </div>

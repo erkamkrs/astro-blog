@@ -1,18 +1,47 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import H1 from '../components/H1.astro';
 import Main from '../components/Main.astro'
-import PostList from '../components/PostList.astro';
+import Post from "../components/Post.astro";
+import { getReviews } from '../../lib/reviews'; // Import getReviews
+import { Image } from 'astro:assets';
 
-const posts = await getCollection('posts');
+// Fetch all reviews/posts
+const posts = await getReviews();
+
+// Ensure that posts data is available
+if (!posts || posts.length === 0) {
+    throw new Error(`No posts found`);
+}
 ---
-
-<Layout title="Blog | Rythm Nation">
-	<Main>
-		<H1 text='Rythm Nation Blog'/>
-        {posts.map(post => (
-            <PostList posts={posts} />
-        ))}
-	</Main>
+<Layout title="Bloggerk">
+    <Main>
+        <H1 text="Bloggerk" />
+        <div class="grid grid-cols-2 gap-x-16 gap-y-14 max-md:grid-cols-1 mb-16">
+            {posts.map(post => (
+                <article key={post.slug} class="card rounded-lg shadow-xl overflow-hidden">
+                    <Image
+                        src={post.image}
+                        alt={post.slug}
+                        width="600"
+                        height="500"
+                        class="w-full h-56 object-cover rounded-t-lg"
+                    />
+                    <div class="p-4">
+                        <h2 class="text-3xl font-semibold leading-tight">
+                            <a href={`/blog/${post.slug}`}>
+                                {post.title}
+                            </a>
+                        </h2>
+                        <p class="text-gray-500 mb-2">
+                            {post.date}
+                        </p>
+                        <a href={`/blog/${post.slug}`} class="inline-block mt-2 font-semibold text-teal-800">
+                            Read More
+                        </a>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </Main>
 </Layout>

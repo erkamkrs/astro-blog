@@ -1,38 +1,37 @@
 ---
-import {getEntryBySlug } from "astro:content";
 import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
-import Main  from "../../components/Main.astro";
-import  H1  from "../../components/H1.astro";
+import Main from "../../components/Main.astro";
+import H1 from "../../components/H1.astro";
+import {getReview} from '../../../lib/reviews'; 
+
 
 const {slug} = Astro.params;
-const post = await getEntryBySlug("posts", slug as string);
+const post = await getReview(slug);
 
 if(!post) {
     return Astro.redirect('/404');
-}   
+}
 
-const {Content} = await post.render();
 
 ---
 
-<Layout title={post.data.title}>
+<Layout title={post.title}>
 	<Main>
-		<H1 text={post.data.title}/>
+		<H1 text={post.title}/>
         <Image 
-            src={post.data.image}
-            alt={post.data.title}
+            src={post.image}
+            alt={post.slug}
             width={1024}
             height={768}
             class="rounded-2xl shadow-xl mb-4 aspect-thumbnail object-cover"
         />
         <div class="text-xl text-teal-900 font-bold mb-4">
-            <p>{post.data.author}</p>
-            <p>{post.data.date}</p>
+            <p>{post.date}</p>
         </div>
         
         <div class="prose prose-2xl overflow-visible relative mb-20">
-            <Content/>
+           <div>{post.body}</div> 
         </div>
     </Main>
 </Layout>

@@ -1,37 +1,35 @@
 ---
-import { Image } from 'astro:assets';
+import { getReview } from '../../lib/reviews'; // Import getReview if needed
 
 type Props = {
-  image: string;
-  author: string;
-  date: string;
-  title: string;
   slug: string;
 };
 
-const { image, author, date, title, slug } = Astro.props;
+const { slug } = Astro.props;
+
+const post = await getReview(slug);
+
+
 ---
 
 <article class="card rounded-lg shadow-xl overflow-hidden">
-  <Image
-    width={600}
-    height={400}
-    src={image}
-    alt={title}
+  <img
+    src={post.image}
+    alt="{post.title}" 
+    width="600"
+    height="400"
     class="w-full h-56 object-cover rounded-t-lg"
   />
   <div class="p-4">
     <h2 class="text-3xl font-semibold leading-tight">
-      <a href={`/blog/${slug}`}>
-        {title}
+      <a href={`/blog/${post.slug}`}>
+        {post.title}
       </a>
     </h2>
     <p class="text-gray-500 mb-2">
-      By {author} &bull; {date}
+      {post.date}
     </p>
-    <p class="text-sm line-clamp-2">
-      </p>
-    <a href={`/blog/${slug}`} class="inline-block mt-2 font-semibold text-teal-800">
+    <a href={`/blog/${post.slug}`} class="inline-block mt-2 font-semibold text-teal-800">
       Read More
     </a>
   </div>
