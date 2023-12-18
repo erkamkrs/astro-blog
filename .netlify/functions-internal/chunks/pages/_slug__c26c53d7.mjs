@@ -75,7 +75,7 @@ const $$Astro$6 = createAstro();
 const $$Header = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
   Astro2.self = $$Header;
-  return renderTemplate`${maybeRenderHead()}<header class="flex justify-between items-center px-24 py-12 max-sm:px-5 max-sm:py-10 max-w-7xl w-full mx-auto"> <a href="/" class="flex justify between gap-x-4"> <img src="/heartbeat.png" alt="rhythm nation logo"${addAttribute(64, "width")}${addAttribute(64, "height")} class="w-16"> </a> <p class=" text-3xl text-zinc-900">BLOGGERK
+  return renderTemplate`${maybeRenderHead()}<header class="flex justify-between items-center px-24 py-12 max-sm:px-5 max-sm:py-10 max-w-7xl w-full mx-auto"> <a href="/" class="flex justify between gap-x-4"> <img src="/soccer-ball.png" alt="rhythm nation logo"${addAttribute(64, "width")}${addAttribute(64, "height")} class="w-16"> </a> <p class=" text-3xl text-zinc-900">BLOGGERK
 </p><ul class="flex gap-x-8 text-xl font-bold"> <li> <a href="/blog" class="text-teal-900 ">Blog</a> </li> <li> <a href="/contact" class="text-teal-900">Contact</a> </li> </ul> </header>`;
 }, "/Users/muhammedkiris/Desktop/code/demos/astro-blog-fcc/src/components/Header.astro", void 0);
 
@@ -83,7 +83,7 @@ const $$Astro$5 = createAstro();
 const $$Footer = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
   Astro2.self = $$Footer;
-  return renderTemplate`${maybeRenderHead()}<footer class="flex justify-between items-center px-12 py-6 max-sm:px-5 max-sm:py-10 max-w-7xl w-full mx-auto"> <a href="/" class="flex justify between gap-x-4"> <img src="/heartbeat.png" alt="rhythm nation logo"${addAttribute(64, "width")}${addAttribute(64, "height")} class="w-16"> </a> <p class=" text-3xl text-zinc-900">Made by Erkam Kiris 2023.</p> </footer>`;
+  return renderTemplate`${maybeRenderHead()}<footer class="flex justify-between items-center px-12 py-6 max-sm:px-5 max-sm:py-10 max-w-7xl w-full mx-auto"> <a href="/" class="flex justify between gap-x-4"> <img src="/soccer-ball.png" alt="rhythm nation logo"${addAttribute(64, "width")}${addAttribute(64, "height")} class="w-16"> </a> <p class=" text-3xl text-zinc-900">Made by Erkam Kiris 2023.</p> </footer>`;
 }, "/Users/muhammedkiris/Desktop/code/demos/astro-blog-fcc/src/components/Footer.astro", void 0);
 
 const $$Astro$4 = createAstro();
