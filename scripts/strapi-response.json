@@ -1,20 +1,29 @@
 {
   "data": [
     {
-      "id": 4,
+      "id": 1,
       "attributes": {
-        "slug": "joselus-resurgence-from-overlooked-to-center-stage",
-        "title": "Joselu's Resurgence: From Overlooked to Center Stage",
+        "slug": "angel-di-maria-benfica-dazzling-display",
+        "title": "Di María's Dazzling Display",
         "date": "2023-12-14",
-        "image": {
-          "data": [
-            {
-              "id": 4,
-              "attributes": {
-                "url": "/uploads/Joselu_Real_Madrid_2023_bea4c4a9a3.jpg"
+        "body": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "In a twilight where stars fade, Di María blazes on. Benfica's battlefield, his canvas; his feet, brushes painting victory. A corner kick, not just a play, but a statement - curved with the finesse of a maestro. Each assist, a masterstroke, slicing through defenses like a knife through silk. The Argentine, a connoisseur of the beautiful game, weaves magic in every touch. Di María, not just playing football, but redefining it, showing the world that class is ageless, and brilliance, timeless.",
+                "type": "text"
               }
+            ]
+          }
+        ],
+        "image": {
+          "data": {
+            "id": 1,
+            "attributes": {
+              "url": "https://res.cloudinary.com/dukrse5kp/image/upload/v1702899196/Getty_Images_1850529907_4bd7bef23d.webp"
             }
-          ]
+          }
         }
       }
     }

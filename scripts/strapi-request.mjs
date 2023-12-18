@@ -1,10 +1,10 @@
 import { writeFileSync } from "fs";
 import qs from "qs";
 
-const url = 'http://localhost:1337/api/reviews/' 
+const url = 'https://astroblog-cms.onrender.com/api/reviews/' 
 + '?' + qs.stringify({
-    filters: {slug: { $eq: 'joselus-resurgence-from-overlooked-to-center-stage'}},
-    fields: ['slug', 'title', 'date'],
+    filters: {slug: { $eq: 'angel-di-maria-benfica-dazzling-display'}},
+    fields: ['slug', 'title', 'date', 'body'],
     populate: { image: { fields: ['url'] } },
     sort : 'date:desc',
     pagination: {pageSize: 1, withCount: false}
